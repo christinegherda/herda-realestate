@@ -1,0 +1,13 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+.filter-wrapper h1 {
+    font-size: 21px;
+}
+
+nav a {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;
+}
