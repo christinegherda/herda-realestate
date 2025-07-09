@@ -22,5 +22,10 @@ export default defineNuxtConfig({
     'swiper/css/pagination',
     'mapbox-gl/dist/mapbox-gl.css',
     '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
-  ]
+  ],
+  vite: {
+    build: {
+      minify: 'terser',
+    },
+  },
 })
