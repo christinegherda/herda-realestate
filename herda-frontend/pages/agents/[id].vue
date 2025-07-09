@@ -22,6 +22,6 @@
 <script setup>
 const route = useRoute()
 const { data: agent, pending, error } = await useAsyncData(`agent-${route.params.id}`, () =>
-  $fetch(`http://localhost:8000/api/agents/${route.params.id}`)
+  $fetch(`${useRuntimeConfig().public.apiBase}/agents/${route.params.id}`)
 )
 </script>

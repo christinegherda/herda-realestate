@@ -13,6 +13,6 @@
 <script setup>
 const route = useRoute()
 const { data: property, pending, error } = await useAsyncData(`property-${route.params.id}`, () =>
-  $fetch(`http://localhost:8000/api/properties/${route.params.id}`)
+  $fetch(`${useRuntimeConfig().public.apiBase}/properties/${route.params.id}`)
 )
 </script>

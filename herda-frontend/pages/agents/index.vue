@@ -15,6 +15,6 @@
 
 <script setup>
 const { data: agents, pending, error } = await useAsyncData('agents', () =>
-  $fetch('http://localhost:8000/api/agents')
+  $fetch(`${useRuntimeConfig().public.apiBase}/agents`)
 )
 </script>
