@@ -5,7 +5,7 @@
       v-model="input"
       @input="searchAddress"
       placeholder="Search location..."
-      class="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-blue-500 text-black"
+      class="w-full border border-gray-300 px-4 py-2 rounded-lg text-black"
     />
     <ul v-if="suggestions.length && input" class="absolute z-10 bg-white w-full border mt-1 rounded-lg shadow">
       <li

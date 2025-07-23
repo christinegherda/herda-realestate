@@ -25,23 +25,44 @@
           </div>
         </SwiperSlide>
       </Swiper>
-      <div class="absolute inset-0 flex items-center justify-center text-white   z-10">
-        <form @submit.prevent="search" >
-          <div class="search-wrapper bg-white p-3 mt-50 flex flex-col md:flex-row gap-4 justify-center">
-            <select class="p-3 rounded-md text-black w-full md:w-auto" v-model="filters.status">
-              <option>For Sale</option>
-              <option>For Rent</option>
-            </select> 
-            <LocationSearch v-model="filters.location"/>
+      <div class="absolute banner-search-form-filter text-white   z-10">
+        <form @submit.prevent="search">
+          <div class="search-wrapper bg-white p-4 mt-4 flex flex-col md:flex-row gap-4 justify-center items-center">
+            
+            <!-- Radio Buttons for Status -->
+            <div class="flex gap-4">
+              <label
+                v-for="option in ['For Sale', 'For Rent']"
+                :key="option"
+                class="flex items-center gap-2 px-4 py-2 border rounded-full cursor-pointer transition-all duration-200"
+                :class="{
+                  'bg-yellow-400 text-black border-yellow-500': filters.status === option,
+                  'bg-white text-gray-700 border-white': filters.status !== option
+                }"
+              >
+                <input
+                  type="radio"
+                  :value="option"
+                  v-model="filters.status"
+                  class="hidden"
+                />
+                {{ option }}
+              </label>
+            </div>
 
+            <!-- Location Input -->
+            <div class="w-full md:w-auto">
+              <LocationSearch v-model="filters.location" class="w-full bg-white text-black p-0 rounded-lg" />
+            </div>
 
-            <button
+            <!-- Search Button -->
+            <!-- <button
               type="submit"
               class="bg-[#e3b001] hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-md"
             >
               Search
-            </button>
-          </div> 
+            </button> -->
+          </div>
         </form>
         
       </div>
@@ -49,14 +70,15 @@
  
     <!-- Featured Properties --> 
     <section class="py-12 ">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold mb-6">Featured Properties</h2>
+      <div class="container mx-auto"> 
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Featured Properties</h2>
+        <p class="text-gray-600 mb-12 text-center">Discover our top property listings — handpicked for their exceptional value, prime location, and investment potential.</p>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <NuxtLink
             v-for="property in featuredProperties"
             :key="property.id"
             :to="`/properties/${property.id}`"
-            class=" bg-white overflow-hidden shadow hover:shadow-lg transition block"
+            class=" bg-white overflow-hidden shadow hover:shadow-lg transition block rounded-md"
           >
             <img
               :src="`${config.public.images}/${property.thumbnail}`"
@@ -106,21 +128,38 @@
 
     <!-- Accredited Developers -->
     <section class="py-12 bg-white">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold mb-6">Accredited Developers</h2>
+      <div class="container mx-auto"> 
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Developer Partners</h2>
+        <p class="text-gray-600 mb-12 text-center">We proudly collaborate with the most trusted and reputable real estate developers in the country.  </p>
         <DeveloperSlider /> 
       </div>
     </section> 
 
-    <!-- Locations  -->
-    <!-- <section class="py-12 ">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold mb-6">Locations</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
-          <img v-for="dev in developers" :key="dev.id" :src="dev.logo" :alt="dev.name" class="h-12 mx-auto">
+    <!-- Our Services  -->
+    <section class="py-12 ">
+      <div class="container mx-auto"> 
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Our Services</h2>
+        <p class="text-gray-600 mb-12 text-center">We offer a wide range of professional real estate services to meet your needs.</p>
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Sell -->
+          <div v-for="service in services" :key="service.title" class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition  text-center">
+            <div class="mb-4 text-yellow-500">
+              <!-- Home Icon -->
+              <Icon :name="service.icon" size="40" class="text-yellow-500 mb-4" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ service.title }}</h3>
+            <p class="text-gray-600">{{ service.description }}</p>
+          </div>
+ 
+
         </div>
+
+ 
       </div>
-    </section> -->
+    </section>
 
     <!-- News Section -->
     <!-- <section class="py-12 bg-white">
@@ -184,6 +223,39 @@ const slides = [
   },
 ]
 
+const services = [
+  {
+    title: 'Sell',
+    description: 'We help you market and sell your property at the best value.',
+    icon: 'material-symbols:sell'
+  },
+  {
+    title: 'Leasing',
+    description: 'We connect landlords and tenants for rentals and long-term leases.',
+    icon: 'material-symbols:apartment'
+  },
+  {
+    title: 'Real Estate Appraisal',
+    description: 'Get fair property valuation by our licensed appraisers.',
+    icon: 'mdi:scale-balance'
+  },
+  {
+    title: 'Loan Mortgage Assistance',
+    description: 'We guide you through the home loan process for faster approval.',
+    icon: 'mdi:hand-coin-outline'
+  },
+  {
+    title: 'Titling and Documentation',
+    description: 'We assist in securing and transferring legal documents.',
+    icon: 'mdi:file-document-edit-outline'
+  },
+  {
+    title: 'Property Management',
+    description: 'We take care of your property’s maintenance and leasing needs.',
+    icon: 'mdi:home-city-outline'
+  }
+]
+
 const searchForm = ref({
   listingType: 'Buy',
   location: ''
@@ -240,10 +312,25 @@ section {
   position: relative;
 }
 
-.filter-wrapper {
+/* .filter-wrapper {
   background-color: black;
   position: absolute;
   bottom: 0;
   border-radius: 0;
+} */
+
+.banner-search-form-filter {
+    /* height: 0; */
+    position: absolute;
+    top: 50vh;
+    left: 0;
+    right: 0;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.search-wrapper {
+    border-radius: 20px;
+    background-color: #162455;
 }
 </style>

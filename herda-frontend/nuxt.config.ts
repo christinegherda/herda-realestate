@@ -5,7 +5,17 @@ export default defineNuxtConfig({
   // axios: {
   //   baseURL: 'http://localhost:8000/api', // your Laravel API URL
   // },
-  modules: ['@nuxt/icon', '@nuxt/image', '@nuxt/ui', '@nuxtjs/tailwindcss'],
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap'
+        }
+      ]
+    }
+  },
+  modules: ['@nuxt/icon', '@nuxt/image', '@nuxt/ui', '@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
   ssr: true,
   runtimeConfig: {
     public: {
@@ -14,6 +24,12 @@ export default defineNuxtConfig({
       mapboxToken: 'pk.eyJ1IjoiY2hyaXN0aW5lZ2hlcmRhIiwiYSI6ImNtYncydnppOTBuYWwya3F3YnhkdWdzMGwifQ.AgxdfT338qilNVzj0tHdUA'
     }
   },
+  // googleFonts: {
+  //   families: {
+  //     Roboto: [100, 300, 400, 500, 700, 900],
+  //   },
+  //   display: 'swap',
+  // },
   css: [
     '~/assets/css/main.css', 
     'swiper/css', 

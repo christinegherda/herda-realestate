@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Navbar -->
-    <nav class="bg-white  px-6 py-4 flex justify-between items-center">
+    <nav class="bg-white  px-6 py-2 flex justify-between items-center header-wrapper">
       <a href="/" class="brand-logo">
         <img src="/images/brand.png" /> 
       </a>
@@ -9,8 +9,8 @@
         <NuxtLink to="/" class="text-gray-700 hover:text-blue-950" active-class="font-bold text-blue-700">Home</NuxtLink>
         <NuxtLink to="/properties" class="text-gray-700 hover:text-blue-950" active-class="font-bold text-blue-700">Properties</NuxtLink>
         <NuxtLink to="/map" class="text-gray-700 hover:text-blue-950" active-class="font-bold text-blue-700">Map Search</NuxtLink>
-        <NuxtLink to="/agents" class="text-gray-700 hover:text-blue-950" active-class="font-bold text-blue-700">Agents</NuxtLink>
-        <NuxtLink to="/agents" class="text-gray-700 hover:text-blue-950" active-class="font-bold text-blue-700">Contact Us</NuxtLink>
+        <NuxtLink to="#services" class="text-gray-700 hover:text-blue-950" active-class="font-bold text-blue-700">Services</NuxtLink>
+        <NuxtLink to="/contact" class="text-gray-700 hover:text-blue-950" active-class="font-bold text-blue-700">Contact Us</NuxtLink>
         <NuxtLink
           to="/list-property"
           class="bg-blue-950 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition font-semibold shadow"
@@ -39,7 +39,8 @@
           </div>
 
           <!-- Services -->
-          <div>
+           <div></div>
+          <!-- <div>
             <h4 class="text-lg font-semibold mb-3">Our Services</h4>
             <ul class="space-y-1">
               <li><a href="#" class="hover:text-gold">Project Selling</a></li>
@@ -47,7 +48,7 @@
               <li><a href="#" class="hover:text-gold">Appraisal</a></li>
               <li><a href="#" class="hover:text-gold">Site Viewing</a></li>
             </ul>
-          </div>
+          </div> -->
 
 
           <!-- Social Media -->

@@ -223,7 +223,7 @@ if (error.value) {
 
 // Directly bind fetched data
 const filteredProperties = computed(() => allProperties.value || [])
-
+console.log(filteredProperties);
 // On Apply Filters button click
 function fetchProperties() {
   router.push({
