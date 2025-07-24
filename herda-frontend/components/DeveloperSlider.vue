@@ -46,9 +46,11 @@ import 'swiper/css/autoplay'
 const config = useRuntimeConfig();
 
 const { data: developers } = await useAsyncData('developers', () =>
-  $fetch(`${useRuntimeConfig().public.apiBase}/developers`)
+  $fetch(`${useRuntimeConfig().public.apiBase}/developers`),
+  { lazy: true }
 )
 
 console.log(developers);
+console.log(developers.value);
 console.log(`${config.public.apiBase}/developers`);
 </script>
