@@ -40,8 +40,8 @@ import 'swiper/css/effect-fade'
 import 'swiper/css/autoplay'
 
 const config = useRuntimeConfig()
-const { data: developers } = await useAsyncData('developers', () =>
-  $fetch(`${config.public.apiBase}/developers`)
+const { data: developers } = await useAsyncData('developers', () => 
+  $fetch(`${useRuntimeConfig().public.apiBase}/developers`)
 )
  
 </script>
