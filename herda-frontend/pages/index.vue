@@ -131,7 +131,33 @@
       <div class="container mx-auto"> 
         <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Developer Partners</h2>
         <p class="text-gray-600 mb-12 text-center">We proudly collaborate with the most trusted and reputable real estate developers in the country.  </p>
-        <DeveloperSlider /> 
+        <!-- <DeveloperSlider />  -->
+
+        <Swiper
+          effect="fade" 
+          :slides-per-view="6"
+          :space-between="10"
+          :breakpoints="{
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 6 }
+          }"
+          :loop="true"
+          :autoplay="{ delay: 100 }"
+          :pagination="true"
+          class="w-full"
+        >
+          <SwiperSlide v-for="developer in developers" :key="developer.id" class="flex justify-center items-center">
+            <div class="bg-white p-2 w-full max-w-[200px] h-[100px] flex justify-center items-center">
+              <img
+                v-if="developer.logo"
+                :src="`${config.public.images}/${developer.logo}`"
+                :alt="developer.name"
+                class="max-h-16 object-contain"
+              />
+            </div>
+          </SwiperSlide>
+        </Swiper>
+
       </div>
     </section> 
 
@@ -172,6 +198,19 @@ import { useRuntimeConfig } from '#imports'
 import { useAsyncData } from '#app'
 import LocationSearch from '~/components/LocationSearch.vue' 
 import DeveloperSlider from '~/components/DeveloperSlider.vue' 
+
+
+
+// import { Swiper, SwiperSlide } from 'swiper/vue'
+// import 'swiper/css' 
+// // import { Autoplay, EffectFade } from 'swiper/modules' 
+// // Import required styles
+// import 'swiper/css'
+// import 'swiper/css/effect-fade'
+// import 'swiper/css/autoplay'
+ 
+ 
+
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, EffectFade } from 'swiper/modules' 
@@ -250,9 +289,9 @@ const { data: testimonials } = await useAsyncData('testimonials', () =>
   $fetch('http://localhost:8000/api/testimonials')
 )
 
-const { data: developers } = await useAsyncData('developers', () =>
-  $fetch('http://localhost:8000/api/developers')
-)
+// const { data: developers } = await useAsyncData('developers', () =>
+//   $fetch('http://localhost:8000/api/developers')
+// )
 
 function searchProperties() {
   // you can later push to /properties with query params
@@ -275,6 +314,26 @@ function search() {
     },
   })
 }
+
+
+
+
+
+ 
+const developers = ref([])
+const  { data: res }  = await await useAsyncData('developers', () =>
+  $fetch(`${useRuntimeConfig().public.apiBase}/developers`),
+  { lazy: true }
+)
+console.log('Client fetch:', res)
+developers.value = res.value
+
+watchEffect(() => {
+  console.log('Fetched developers:', developers.value)
+})
+
+console.log(developers.value);
+console.log(`${config.public.apiBase}/developers`); 
 </script>
 
 <style scoped>

@@ -61,6 +61,6 @@ watchEffect(() => {
 
 console.log(developers.value);
 console.log(`${config.public.apiBase}/developers`); 
-
+ 
 
 </script>
