@@ -160,32 +160,7 @@
  
       </div>
     </section>
-
-    <!-- News Section -->
-    <!-- <section class="py-12 bg-white">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold mb-6">Latest News</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white p-4 shadow rounded" v-for="news in latestNews" :key="news.id">
-            <h3 class="font-semibold text-lg">{{ news.title }}</h3>
-            <p class="text-sm text-gray-600">{{ news.excerpt }}</p>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- Testimonials Section -->
-    <!-- <section class="py-12 ">
-      <div class="container mx-auto">
-        <h2 class="text-2xl font-bold mb-6">Testimonials</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-6 border rounded shadow" v-for="testimonial in testimonials" :key="testimonial.id">
-            <p class="italic">"{{ testimonial.message }}"</p>
-            <p class="mt-2 font-bold">- {{ testimonial.author }}</p>
-          </div>
-        </div>
-      </div>
-    </section> -->
+ 
 
   </div>
 </template>

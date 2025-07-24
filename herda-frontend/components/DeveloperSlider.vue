@@ -1,6 +1,10 @@
 <template>
   <div class="py-12 ">
     <div class="container mx-auto"> 
+      testing
+      <pre>
+        {{ developers }}
+      </pre>
       <swiper
         effect="fade" 
         :slides-per-view="6"
@@ -39,9 +43,12 @@ import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/autoplay'
 
-const config = useRuntimeConfig()
-const { data: developers } = await useAsyncData('developers', () => 
+const config = useRuntimeConfig();
+
+const { data: developers } = await useAsyncData('developers', () =>
   $fetch(`${useRuntimeConfig().public.apiBase}/developers`)
 )
- 
+
+console.log(developers);
+console.log(`${config.public.apiBase}/developers`);
 </script>
